@@ -297,7 +297,7 @@ export default function App() {
           <div className="flex-1 flex justify-center md:justify-end relative">
             <div className="absolute inset-0 transform rotate-3 scale-95 opacity-20" style={{ backgroundColor: 'var(--color-primary)', borderRadius: 'var(--radius-lg)' }}></div>
             <img
-              src="/Foto minha.jpg"
+              src="/foto-minha.jpg"
               alt="Dr. João Pedro Campos"
               className="w-full max-w-md shadow-xl relative z-10 object-cover aspect-[4/5]"
               style={{ borderRadius: 'var(--radius-lg)' }}
@@ -323,7 +323,7 @@ export default function App() {
                   </div>
                   <div className="flex-shrink-0">
                     <img
-                      src="/Logotipo OrtoMAIS.png"
+                      src="/logotipo-ortomais.png"
                       alt="Logotipo Orto+"
                       className="h-60 md:h-50 object-contain"
                     />
@@ -333,7 +333,7 @@ export default function App() {
                 {/* Bottom row: Team Photo */}
                 <div className="w-full relative">
                   <img
-                    src="/Foto equipa Orto+.jpg"
+                    src="/foto-equipa-ortomais.jpg"
                     alt="Equipa Orto+"
                     className="w-full shadow-lg object-cover"
                     style={{ borderRadius: 'var(--radius-lg)' }}
@@ -357,7 +357,7 @@ export default function App() {
               {/* Hospital Lusíadas Maia */}
               <div className="glass-panel p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
                 <div className="h-28 flex items-center mb-8">
-                  <img src="/Logotipo Lusíadas.png" alt="Lusíadas Maia" className="h-28 object-contain" />
+                  <img src="/logotipo-lusiadas.png" alt="Lusíadas Maia" className="h-28 object-contain" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>Hospital Lusíadas Maia</h3>
@@ -380,9 +380,9 @@ export default function App() {
               {/* Hospital Pedro Hispano (ULSM) */}
               <div className="glass-panel p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
                 <div className="h-28 flex items-center gap-6 mb-8">
-                  <img src="/Logotipo Serviço Ortopedia ULSM.png" alt="Serviço de Ortopedia ULSM" className="h-28 object-contain ml-3" />
+                  <img src="/logotipo-servico-ortopedia-ulsm.png" alt="Serviço de Ortopedia ULSM" className="h-28 object-contain ml-3" />
                   <div className="w-px h-20" style={{ backgroundColor: 'var(--surface-border)' }}></div>
-                  <img src="/Logotipo ULSM.png" alt="ULS Matosinhos" className="h-28 object-contain" />
+                  <img src="/logotipo-ulsm.png" alt="ULS Matosinhos" className="h-28 object-contain" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>Hospital Pedro Hispano</h3>
