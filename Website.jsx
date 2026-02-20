@@ -356,8 +356,8 @@ export default function App() {
 
               {/* Hospital Lusíadas Maia */}
               <div className="glass-panel p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
-                <div className="h-28 flex items-center mb-8">
-                  <img src="/logotipo-lusiadas.png" alt="Lusíadas Maia" className="h-28 object-contain" />
+                <div className="h-20 md:h-28 flex items-center mb-8">
+                  <img src="/logotipo-lusiadas.png" alt="Lusíadas Maia" className="h-20 md:h-28 object-contain" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>Hospital Lusíadas Maia</h3>
@@ -379,10 +379,10 @@ export default function App() {
 
               {/* Hospital Pedro Hispano (ULSM) */}
               <div className="glass-panel p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
-                <div className="h-28 flex items-center gap-6 mb-8">
-                  <img src="/logotipo-servico-ortopedia-ulsm.png" alt="Serviço de Ortopedia ULSM" className="h-28 object-contain ml-3" />
-                  <div className="w-px h-20" style={{ backgroundColor: 'var(--surface-border)' }}></div>
-                  <img src="/logotipo-ulsm.png" alt="ULS Matosinhos" className="h-28 object-contain" />
+                <div className="h-20 md:h-28 flex items-center gap-4 md:gap-6 mb-8">
+                  <img src="/logotipo-servico-ortopedia-ulsm.png" alt="Serviço de Ortopedia ULSM" className="h-16 md:h-28 object-contain flex-1 min-w-0" />
+                  <div className="w-px h-12 md:h-20 flex-shrink-0" style={{ backgroundColor: 'var(--surface-border)' }}></div>
+                  <img src="/logotipo-ulsm.png" alt="ULS Matosinhos" className="h-16 md:h-28 object-contain flex-1 min-w-0" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>Hospital Pedro Hispano</h3>
