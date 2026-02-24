@@ -287,7 +287,7 @@ export default function App() {
         <div className="bg-blob-2"></div>
 
         {/* Navigation */}
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-panel py-3 !border-t-0 !border-x-0 !rounded-none !bg-white/80' : 'bg-transparent py-5'}`}>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-panel py-3 !border-t-0 !border-x-0 !rounded-none shadow-lg' : 'bg-transparent py-5'}`}>
           <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
             <a href="#" className="flex items-center gap-2">
               <span className=" font-bold text-xl tracking-tight" style={{ color: 'var(--color-text)' }}>Dr. João Pedro Campos</span>
@@ -313,7 +313,7 @@ export default function App() {
 
           {/* Mobile Nav */}
           {isMobileMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 w-full glass-panel !rounded-none shadow-xl py-4 flex flex-col items-center gap-4 border-t">
+            <div className="md:hidden absolute top-full left-0 w-full glass-panel !rounded-none shadow-xl py-4 flex flex-col items-center gap-4 border-t border-white/20">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
