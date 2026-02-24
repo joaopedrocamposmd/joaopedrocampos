@@ -133,7 +133,6 @@ const IllustrationProsthesis = () => (
     <circle cx="185" cy="115" r="3" fill="#3b877b" />
     <text x="255" y="78" fill="#2c3e50" fontSize="11" fontFamily="monospace" fontWeight="600">PARTIAL_KNEE_UKA</text>
     <text x="255" y="93" fill="#3b877b" fontSize="9" fontFamily="monospace">COMPARTMENT: MEDIAL</text>
-    <text x="255" y="105" fill="#3b877b" fontSize="9" fontFamily="monospace">CARTILAGE_PRESERVED</text>
   </svg>
 );
 
@@ -550,32 +549,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Secção Áreas de Especialização */}
-        <section id="especialidade" className="py-20 relative z-10">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>Áreas de Intervenção</h2>
-              <p className="opacity-80" style={{ color: 'var(--color-text)' }}>Foco absoluto na patologia do joelho, garantindo as técnicas mais adequadas e precisas para cada lesão.</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {expertises.map((item, idx) => (
-                <div key={idx} className="glass-panel hover:-translate-y-1 transition-transform duration-300 group flex flex-col overflow-hidden p-2">
-                  <div className="w-full h-48 md:h-56 rounded-t-xl rounded-b-sm overflow-hidden mb-6 relative">
-                    {item.illustration}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-multiply"></div>
-                  </div>
-                  <div className="px-6 pb-6">
-                    <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
-                    <p className="leading-relaxed opacity-80" style={{ color: 'var(--color-text)' }}>
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Secção Áreas de Especialização */}
         <section id="especialidade" className="py-20 relative z-10">
