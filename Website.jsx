@@ -11,7 +11,11 @@ import {
   Users,
   Briefcase,
   GraduationCap,
-  CalendarDays
+  CalendarDays,
+  Activity,
+  Crosshair,
+  Layers,
+  ShieldPlus
 } from 'lucide-react';
 
 export default function App() {
@@ -36,15 +40,6 @@ export default function App() {
 
   // 🔴 COLE AQUI O LINK DO SEU GOOGLE SHEETS INTERMÉDIO (formato CSV)
   const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQyXFTKmHSbZhTmOYi9Oqo4B-r71zZ_TJE_oBIXLH61d7Ln7E2QHoyDf6PFRbX3A5kyYW5ji5DHWajg/pub?gid=462780236&single=true&output=csv";
-
-  // Efeito para alterar o estilo da navbar ao fazer scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Buscar número de cirurgias do Google Sheets Intermédio
   useEffect(() => {
