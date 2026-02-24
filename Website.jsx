@@ -11,11 +11,7 @@ import {
   Users,
   Briefcase,
   GraduationCap,
-  CalendarDays,
-  Activity,
-  Crosshair,
-  Layers,
-  ShieldPlus
+  CalendarDays
 } from 'lucide-react';
 
 export default function App() {
@@ -124,22 +120,22 @@ export default function App() {
     {
       title: "Lesões Desportivas e Ligamentares",
       desc: "Tratamento cirúrgico e conservador de roturas do Ligamento Cruzado Anterior (LCA) e lesões multiligamentares associadas à prática desportiva.",
-      icon: <Activity size={28} strokeWidth={1.5} />
+      image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&q=80&w=800"
     },
     {
       title: "Patologia do Menisco e Cartilagem",
       desc: "Técnicas de preservação, sutura meniscal e tratamento de lesões condrais (cartilagem) focadas na longevidade da articulação.",
-      icon: <Crosshair size={28} strokeWidth={1.5} />
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800"
     },
     {
       title: "Artroplastia (Prótese) do Joelho",
       desc: "Substituição articular total ou parcial recorrendo às vias de abordagem mais adequadas para uma recuperação otimizada e retorno à qualidade de vida.",
-      icon: <Layers size={28} strokeWidth={1.5} />
+      image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800"
     },
     {
       title: "Cirurgia de Preservação Articular",
       desc: "Osteotomias de realinhamento para correção de eixos e preservação da articulação biológica em casos de desgaste precoce.",
-      icon: <ShieldPlus size={28} strokeWidth={1.5} />
+      image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=800"
     }
   ];
 
@@ -406,16 +402,23 @@ export default function App() {
               <p className="opacity-80" style={{ color: 'var(--color-text)' }}>Foco absoluto na patologia do joelho, garantindo as técnicas mais adequadas e precisas para cada lesão.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {expertises.map((item, idx) => (
-                <div key={idx} className="glass-panel p-8 hover:-translate-y-1 transition-transform duration-300 group">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors" style={{ backgroundColor: 'rgba(59, 135, 123, 0.1)', color: 'var(--color-primary)' }}>
-                    {item.icon}
+                <div key={idx} className="glass-panel hover:-translate-y-1 transition-transform duration-300 group flex flex-col overflow-hidden p-2">
+                  <div className="w-full h-48 md:h-56 rounded-t-xl rounded-b-sm overflow-hidden mb-6 relative">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-multiply"></div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
-                  <p className="leading-relaxed opacity-80" style={{ color: 'var(--color-text)' }}>
-                    {item.desc}
-                  </p>
+                  <div className="px-6 pb-6">
+                    <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
+                    <p className="leading-relaxed opacity-80" style={{ color: 'var(--color-text)' }}>
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
