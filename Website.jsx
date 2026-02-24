@@ -14,6 +14,162 @@ import {
   CalendarDays
 } from 'lucide-react';
 
+// --- ILUSTRAÇÕES MÉDICAS PERSONALIZADAS (Estilo UBNIC: "Anatomia de Precisão") ---
+
+const IllustrationLCA = () => (
+  <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <defs>
+      <pattern id="gridLCA" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(44, 62, 80, 0.05)" strokeWidth="1" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gridLCA)" />
+
+    {/* Fémur e Tíbia Abstratos */}
+    <path d="M 180 20 C 180 70, 150 90, 150 110 C 150 130, 230 130, 230 110 C 230 90, 200 70, 200 20" fill="none" stroke="#2c3e50" strokeWidth="6" strokeLinecap="round" opacity="0.8" />
+    <path d="M 150 150 C 150 130, 230 130, 230 150 L 210 220 L 170 220 Z" fill="none" stroke="#2c3e50" strokeWidth="6" strokeLinecap="round" opacity="0.8" />
+
+    {/* Ligamentos (LCA em destaque) */}
+    <line x1="165" y1="105" x2="215" y2="145" stroke="#3b877b" strokeWidth="6" strokeLinecap="round" opacity="0.9" />
+    <line x1="215" y1="105" x2="165" y2="145" stroke="#3b877b" strokeWidth="6" strokeLinecap="round" opacity="0.3" />
+
+    {/* Pontos de Dados Clínicos */}
+    <circle cx="190" cy="125" r="5" fill="#e67e22" />
+    <circle cx="165" cy="105" r="4" fill="#2a6058" />
+    <circle cx="215" cy="145" r="4" fill="#2a6058" />
+
+    {/* UI Elements */}
+    <line x1="230" y1="125" x2="280" y2="125" stroke="#3b877b" strokeWidth="1.5" strokeDasharray="4 4" />
+    <text x="290" y="129" fill="#2c3e50" fontSize="11" fontFamily="monospace" fontWeight="600">LCA_RECONSTRUCT</text>
+    <text x="290" y="145" fill="#3b877b" fontSize="9" fontFamily="monospace">GRAFT_TENSION: OK</text>
+  </svg>
+);
+
+const IllustrationMeniscus = () => (
+  <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <defs>
+      <pattern id="gridMeniscus" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(44, 62, 80, 0.05)" strokeWidth="1" />
+      </pattern>
+      <radialGradient id="meniscusGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="0%" stopColor="#3b877b" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#2a6058" stopOpacity="0.9" />
+      </radialGradient>
+      <linearGradient id="boneGradMeniscus" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f4f7f6" />
+        <stop offset="100%" stopColor="#e2e8e6" />
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gridMeniscus)" />
+
+    {/* Planalto Tibial (Vista Superior) */}
+    <ellipse cx="200" cy="110" rx="120" ry="60" fill="url(#boneGradMeniscus)" stroke="#2c3e50" strokeWidth="2" opacity="0.5" />
+
+    {/* Menisco Medial (Forma de C) */}
+    <path d="M 140 80 C 100 80, 90 140, 140 140 C 170 140, 170 120, 150 120 C 130 120, 130 100, 150 100 C 170 100, 170 80, 140 80 Z" fill="url(#meniscusGrad)" stroke="#2a6058" strokeWidth="1" opacity="0.9" />
+
+    {/* Menisco Lateral (Forma de O) */}
+    <path d="M 260 80 C 300 80, 310 140, 260 140 C 230 140, 230 120, 250 120 C 270 120, 270 100, 250 100 C 230 100, 230 80, 260 80 Z" fill="url(#meniscusGrad)" stroke="#2a6058" strokeWidth="1" opacity="0.3" />
+
+    {/* Lesão Meniscal Longitudinal e Foco */}
+    {/* Nova rotura longitudinal ao longo do menisco medial */}
+    <path d="M 135 95 C 115 95, 110 125, 135 125" stroke="#e67e22" strokeWidth="3" strokeLinecap="round" fill="none" />
+
+    {/* Círculo de foco reposicionado */}
+    <circle cx="125" cy="110" r="25" fill="none" stroke="#e67e22" strokeWidth="2" strokeDasharray="4 4" />
+
+    {/* Linha de chamada e textos atualizados */}
+    <line x1="125" y1="85" x2="125" y2="50" stroke="#e67e22" strokeWidth="1.5" />
+    <text x="130" y="45" fill="#2c3e50" fontSize="11" fontFamily="monospace" fontWeight="600">MENISCAL_TEAR</text>
+    <text x="130" y="60" fill="#e67e22" fontSize="9" fontFamily="monospace">TYPE: LONGITUDINAL</text>
+  </svg>
+);
+
+const IllustrationProsthesis = () => (
+  <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <defs>
+      <pattern id="gridProsth" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(44, 62, 80, 0.05)" strokeWidth="1" />
+      </pattern>
+      <linearGradient id="metalProsth" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#94a3b8" />
+        <stop offset="20%" stopColor="#f8fafc" />
+        <stop offset="50%" stopColor="#94a3b8" />
+        <stop offset="80%" stopColor="#cbd5e1" />
+        <stop offset="100%" stopColor="#475569" />
+      </linearGradient>
+      <linearGradient id="polyProsth" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" />
+        <stop offset="100%" stopColor="#e2e8e6" />
+      </linearGradient>
+      <linearGradient id="boneProsth" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f4f7f6" />
+        <stop offset="100%" stopColor="#cbd5e1" />
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gridProsth)" />
+
+    {/* Fémur Distal Anatómico */}
+    <path d="M 155 -10 L 155 40 C 155 70, 135 90, 135 120 C 135 140, 150 155, 175 145 C 185 140, 195 130, 205 140 C 220 155, 245 140, 245 110 C 245 80, 215 60, 215 -10 Z" fill="url(#boneProsth)" stroke="#2c3e50" strokeWidth="2" opacity="0.8" />
+
+    {/* Tíbia Proximal e Perónio */}
+    <path d="M 130 180 C 130 190, 145 230, 145 230 L 215 230 C 215 230, 240 190, 240 180 C 240 160, 130 160, 130 180 Z" fill="url(#boneProsth)" stroke="#2c3e50" strokeWidth="2" opacity="0.8" />
+    <path d="M 265 195 L 250 230 L 265 230 Z" fill="url(#boneProsth)" stroke="#2c3e50" strokeWidth="2" opacity="0.6" />
+
+    {/* Componente Femoral UKA (Medial - Lado Esquerdo) */}
+    <path d="M 130 115 C 130 85, 150 75, 160 75 C 175 75, 185 95, 185 120 C 185 145, 170 155, 155 155 C 140 155, 130 140, 130 115 Z" fill="url(#metalProsth)" stroke="#2c3e50" strokeWidth="1.5" />
+
+    {/* Reflexo extra para dar volume 3D ao metal */}
+    <path d="M 135 115 C 135 95, 145 85, 155 85" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.8" strokeLinecap="round" />
+
+    {/* Componente Tibial UKA (Bandeja Metálica Medial) */}
+    <path d="M 125 172 C 145 177, 180 177, 190 172 L 190 178 C 180 183, 145 183, 125 178 Z" fill="url(#metalProsth)" stroke="#2c3e50" strokeWidth="1.5" />
+
+    {/* Inserto em Polietileno (Poly) */}
+    <path d="M 128 152 C 145 158, 175 158, 187 152 L 188 172 C 175 177, 145 177, 128 172 Z" fill="url(#polyProsth)" stroke="#2c3e50" strokeWidth="1.5" />
+
+    {/* Interface de Dados Clínicos */}
+    <line x1="185" y1="115" x2="250" y2="80" stroke="#3b877b" strokeWidth="1.5" />
+    <circle cx="185" cy="115" r="3" fill="#3b877b" />
+    <text x="255" y="78" fill="#2c3e50" fontSize="11" fontFamily="monospace" fontWeight="600">PARTIAL_KNEE_UKA</text>
+    <text x="255" y="93" fill="#3b877b" fontSize="9" fontFamily="monospace">COMPARTMENT: MEDIAL</text>
+    <text x="255" y="105" fill="#3b877b" fontSize="9" fontFamily="monospace">CARTILAGE_PRESERVED</text>
+  </svg>
+);
+
+
+const IllustrationPreservation = () => (
+  <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <defs>
+      <pattern id="gridPreserv" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(44, 62, 80, 0.05)" strokeWidth="1" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gridPreserv)" />
+
+    {/* Contorno Perna / Eixo Mecânico Original */}
+    <path d="M 190 20 L 170 120 L 195 220" fill="none" stroke="#2c3e50" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
+
+    {/* Eixo Corrigido (Osteotomia) */}
+    <line x1="190" y1="20" x2="190" y2="220" stroke="#3b877b" strokeWidth="2" strokeDasharray="6 4" />
+
+    {/* Ângulo de Correção */}
+    <path d="M 183 150 A 40 40 0 0 0 190 157" fill="none" stroke="#e67e22" strokeWidth="2" />
+    <text x="195" y="155" fill="#e67e22" fontSize="11" fontFamily="monospace" fontWeight="600">VARUS CORR.</text>
+
+    {/* Foco Articular */}
+    <circle cx="170" cy="120" r="12" fill="none" stroke="#2c3e50" strokeWidth="2.5" />
+    <circle cx="170" cy="120" r="3" fill="#3b877b" />
+    <line x1="170" y1="120" x2="250" y2="80" stroke="#2c3e50" strokeWidth="1" opacity="0.6" />
+    <text x="255" y="78" fill="#2c3e50" fontSize="11" fontFamily="monospace" fontWeight="600">HTO_REALIGNMENT</text>
+    <text x="255" y="93" fill="#3b877b" fontSize="9" fontFamily="monospace">AXIS: 180°</text>
+  </svg>
+);
+
+
+
+// --- COMPONENTE PRINCIPAL ---
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -58,7 +214,7 @@ export default function App() {
         }
       } catch (error) {
         console.error("Erro ao carregar dados do Google Sheets:", error);
-        setSurgeryCount(1250); // Fallback visual em caso de erro de rede
+        setSurgeryCount(3500); // Fallback visual em caso de erro de rede
       }
     };
 
@@ -120,22 +276,22 @@ export default function App() {
     {
       title: "Lesões Desportivas e Ligamentares",
       desc: "Tratamento cirúrgico e conservador de roturas do Ligamento Cruzado Anterior (LCA) e lesões multiligamentares associadas à prática desportiva.",
-      image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&q=80&w=800"
+      illustration: <IllustrationLCA />
     },
     {
       title: "Patologia do Menisco e Cartilagem",
       desc: "Técnicas de preservação, sutura meniscal e tratamento de lesões condrais (cartilagem) focadas na longevidade da articulação.",
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800"
+      illustration: <IllustrationMeniscus />
     },
     {
       title: "Artroplastia (Prótese) do Joelho",
       desc: "Substituição articular total ou parcial recorrendo às vias de abordagem mais adequadas para uma recuperação otimizada e retorno à qualidade de vida.",
-      image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800"
+      illustration: <IllustrationProsthesis />
     },
     {
       title: "Cirurgia de Preservação Articular",
       desc: "Osteotomias de realinhamento para correção de eixos e preservação da articulação biológica em casos de desgaste precoce.",
-      image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=800"
+      illustration: <IllustrationPreservation />
     }
   ];
 
@@ -406,12 +562,35 @@ export default function App() {
               {expertises.map((item, idx) => (
                 <div key={idx} className="glass-panel hover:-translate-y-1 transition-transform duration-300 group flex flex-col overflow-hidden p-2">
                   <div className="w-full h-48 md:h-56 rounded-t-xl rounded-b-sm overflow-hidden mb-6 relative">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    {item.illustration}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent mix-blend-multiply"></div>
+                  </div>
+                  <div className="px-6 pb-6">
+                    <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
+                    <p className="leading-relaxed opacity-80" style={{ color: 'var(--color-text)' }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Secção Áreas de Especialização */}
+        <section id="especialidade" className="py-20 relative z-10">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>Áreas de Intervenção</h2>
+              <p className="opacity-80" style={{ color: 'var(--color-text)' }}>Foco absoluto na patologia do joelho, garantindo as técnicas mais adequadas e precisas para cada lesão.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {expertises.map((item, idx) => (
+                <div key={idx} className="glass-panel hover:-translate-y-1 transition-transform duration-300 group flex flex-col overflow-hidden p-2">
+                  <div className="w-full h-48 md:h-56 rounded-t-xl rounded-b-sm overflow-hidden mb-6 relative border-b border-black/5">
+                    {item.illustration}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-40"></div>
                   </div>
                   <div className="px-6 pb-6">
                     <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
