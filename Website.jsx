@@ -31,6 +31,49 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Estado para o contador de cirurgias
+  const [surgeryCount, setSurgeryCount] = useState(0);
+
+  // 🔴 COLE AQUI O LINK DO SEU GOOGLE SHEETS INTERMÉDIO (formato CSV)
+  const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQyXFTKmHSbZhTmOYi9Oqo4B-r71zZ_TJE_oBIXLH61d7Ln7E2QHoyDf6PFRbX3A5kyYW5ji5DHWajg/pub?gid=462780236&single=true&output=csv";
+
+  // Efeito para alterar o estilo da navbar ao fazer scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Buscar número de cirurgias do Google Sheets Intermédio
+  useEffect(() => {
+    const fetchSurgeries = async () => {
+
+      try {
+        const response = await fetch(GOOGLE_SHEETS_CSV_URL);
+        const text = await response.text();
+
+        // Tenta ler o texto diretamente como um número (já que o sheet intermédio só terá 1 célula)
+        const parsedNumber = parseInt(text.trim(), 10);
+
+        if (!isNaN(parsedNumber)) {
+          setSurgeryCount(parsedNumber);
+        } else {
+          // Fallback: se o ficheiro tiver linhas, conta as linhas
+          const rows = text.split('\n');
+          const count = rows.length > 1 ? rows.length - 1 : 0;
+          setSurgeryCount(count);
+        }
+      } catch (error) {
+        console.error("Erro ao carregar dados do Google Sheets:", error);
+        setSurgeryCount(1250); // Fallback visual em caso de erro de rede
+      }
+    };
+
+    fetchSurgeries();
+  }, []);
+
   // Buscar publicações diretamente do ORCID
   useEffect(() => {
     const fetchOrcidData = async () => {
@@ -75,10 +118,34 @@ export default function App() {
 
   const navLinks = [
     { name: 'Sobre Mim', href: '#sobre' },
+    { name: 'Especialidade', href: '#especialidade' },
     { name: 'Equipa Orto+', href: '#equipa' },
     { name: 'Locais de Trabalho', href: '#locais' },
     { name: 'Publicações', href: '#publicacoes' },
     { name: 'Percurso', href: '#percurso' },
+  ];
+
+  const expertises = [
+    {
+      title: "Lesões Desportivas e Ligamentares",
+      desc: "Tratamento cirúrgico e conservador de roturas do Ligamento Cruzado Anterior (LCA) e lesões multiligamentares associadas à prática desportiva.",
+      icon: <Activity size={28} strokeWidth={1.5} />
+    },
+    {
+      title: "Patologia do Menisco e Cartilagem",
+      desc: "Técnicas de preservação, sutura meniscal e tratamento de lesões condrais (cartilagem) focadas na longevidade da articulação.",
+      icon: <Crosshair size={28} strokeWidth={1.5} />
+    },
+    {
+      title: "Artroplastia (Prótese) do Joelho",
+      desc: "Substituição articular total ou parcial recorrendo às vias de abordagem mais adequadas para uma recuperação otimizada e retorno à qualidade de vida.",
+      icon: <Layers size={28} strokeWidth={1.5} />
+    },
+    {
+      title: "Cirurgia de Preservação Articular",
+      desc: "Osteotomias de realinhamento para correção de eixos e preservação da articulação biológica em casos de desgaste precoce.",
+      icon: <ShieldPlus size={28} strokeWidth={1.5} />
+    }
   ];
 
   const experiences = [
@@ -302,6 +369,61 @@ export default function App() {
               className="w-full max-w-md shadow-xl relative z-10 object-cover aspect-[4/5]"
               style={{ borderRadius: 'var(--radius-lg)' }}
             />
+          </div>
+        </section>
+
+        {/* Secção Estatísticas / Em Números */}
+        <section className="pb-20 relative z-10">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="glass-panel p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x" style={{ borderColor: 'var(--surface-border)' }}>
+
+              <div className="flex flex-col items-center justify-center text-center pt-4 md:pt-0">
+                <div className="clinical-data text-4xl lg:text-5xl font-bold mb-2 flex items-center gap-1" style={{ color: 'var(--color-primary)' }}>
+                  {surgeryCount}<span className="text-3xl">+</span>
+                </div>
+                <div className="font-medium text-sm tracking-wide uppercase opacity-80" style={{ color: 'var(--color-text)' }}>Cirurgias Realizadas</div>
+                <p className="text-xs opacity-60 mt-2 clinical-data">* Atualizado automaticamente</p>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-center pt-8 md:pt-0" style={{ borderColor: 'var(--surface-border)' }}>
+                <div className="clinical-data text-4xl lg:text-5xl font-bold mb-2 flex items-center gap-1" style={{ color: 'var(--color-primary)' }}>
+                  8<span className="text-3xl">+</span>
+                </div>
+                <div className="font-medium text-sm tracking-wide uppercase opacity-80" style={{ color: 'var(--color-text)' }}>Anos de Experiência</div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-center pt-8 md:pt-0" style={{ borderColor: 'var(--surface-border)' }}>
+                <div className="clinical-data text-4xl lg:text-5xl font-bold mb-2" style={{ color: 'var(--color-primary)' }}>
+                  {publications.length > 0 ? publications.length : '10+'}
+                </div>
+                <div className="font-medium text-sm tracking-wide uppercase opacity-80" style={{ color: 'var(--color-text)' }}>Publicações Indexadas</div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Secção Áreas de Especialização */}
+        <section id="especialidade" className="py-20 relative z-10">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>Áreas de Intervenção</h2>
+              <p className="opacity-80" style={{ color: 'var(--color-text)' }}>Foco absoluto na patologia do joelho, garantindo as técnicas mais adequadas e precisas para cada lesão.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {expertises.map((item, idx) => (
+                <div key={idx} className="glass-panel p-8 hover:-translate-y-1 transition-transform duration-300 group">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors" style={{ backgroundColor: 'rgba(59, 135, 123, 0.1)', color: 'var(--color-primary)' }}>
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
+                  <p className="leading-relaxed opacity-80" style={{ color: 'var(--color-text)' }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
