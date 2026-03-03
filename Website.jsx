@@ -528,7 +528,6 @@ export default function App() {
                   {surgeryCount}<span className="text-3xl">+</span>
                 </div>
                 <div className="font-medium text-sm tracking-wide uppercase opacity-80" style={{ color: 'var(--color-text)' }}>Cirurgias Realizadas</div>
-                <p className="text-xs opacity-60 mt-2 clinical-data">* Atualizado automaticamente</p>
               </div>
 
               <div className="flex flex-col items-center justify-center text-center pt-8 md:pt-0" style={{ borderColor: 'var(--surface-border)' }}>
