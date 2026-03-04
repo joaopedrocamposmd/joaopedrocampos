@@ -45,7 +45,7 @@ const IllustrationLCA = () => (
   </svg>
 );
 
-const IllustrationMeniscus = () => (
+const IllustrationMeniscu = () => (
   <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
     <defs>
       <pattern id="gridMeniscus" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -165,7 +165,113 @@ const IllustrationPreservation = () => (
   </svg>
 );
 
+const IllustrationFallback = () => (
+  <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <defs>
+      <pattern id="gridFallback" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(44, 62, 80, 0.05)" strokeWidth="1" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#gridFallback)" />
 
+    {/* Abstract fallback medical graphic */}
+    <circle cx="200" cy="100" r="40" fill="none" stroke="rgba(59, 135, 123, 0.2)" strokeWidth="2" strokeDasharray="4 4" />
+    <circle cx="200" cy="100" r="20" fill="none" stroke="rgba(59, 135, 123, 0.4)" strokeWidth="1" />
+    <path d="M 195 95 L 205 105 M 205 95 L 195 105" stroke="rgba(59, 135, 123, 0.4)" strokeWidth="2" strokeLinecap="round" />
+
+    <text x="200" y="160" fill="rgba(44, 62, 80, 0.4)" fontSize="11" fontFamily="monospace" textAnchor="middle" fontWeight="500">MEDICAL_DATA_PENDING</text>
+  </svg>
+);
+
+
+
+// --- DADOS DO CIRURGIÃO ---
+// Altere estes dados para reutilizar a página para outros cirurgiões.
+const surgeonData = {
+  name: "Dr. João Pedro Campos",
+  heroTag: "Especialista em Ortopedia",
+  heroTitle: "Cirurgião de Joelho",
+  heroSubtitle: "Knee Surgeon",
+  heroDescription: "Dedicado à patologia do joelho. O meu foco é proporcionar os tratamentos mais avançados, apoiados em dados e precisão clínica, para restaurar a sua mobilidade.",
+  yearsOfExperience: "8",
+  linkedinUrl: "https://www.linkedin.com/in/jo%C3%A3o-pedro-campos-765214208/",
+  orcidId: "0000-0003-2156-5820",
+  googleSheetsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQyXFTKmHSbZhTmOYi9Oqo4B-r71zZ_TJE_oBIXLH61d7Ln7E2QHoyDf6PFRbX3A5kyYW5ji5DHWajg/pub?gid=462780236&single=true&output=csv",
+  schedulingUrl: "https://www.lusiadas.pt/corpo-clinico/dr-joao-pedro-campos",
+  expertises: [
+    {
+      title: "Lesões Desportivas e Ligamentares",
+      desc: "Tratamento cirúrgico e conservador de roturas do Ligamento Cruzado Anterior (LCA) e lesões multiligamentares associadas à prática desportiva.",
+      illustration: <IllustrationLCA />
+    },
+    {
+      title: "Patologia do Menisco e Cartilagem",
+      desc: "Técnicas de preservação, sutura meniscal e tratamento de lesões condrais (cartilagem) focadas na longevidade da articulação.",
+      illustration: <IllustrationMeniscus />
+    },
+    {
+      title: "Artroplastia (Prótese) do Joelho",
+      desc: "Substituição articular total ou parcial recorrendo às vias de abordagem mais adequadas para uma recuperação otimizada e retorno à qualidade de vida.",
+      illustration: <IllustrationProsthesis />
+    },
+    {
+      title: "Cirurgia de Preservação Articular",
+      desc: "Osteotomias de realinhamento para correção de eixos e preservação da articulação biológica em casos de desgaste precoce.",
+      illustration: <IllustrationPreservation />
+    }
+  ],
+  experiences: [
+    {
+      role: "Cirurgia do Joelho",
+      company: "Lusíadas Saúde - Maia",
+      period: "Set 2025 - Presente",
+      location: "Maia",
+    },
+    {
+      role: "Cirurgia do Joelho",
+      company: "Hospital Pedro Hispano - ULSM",
+      period: "Mar 2023 - Presente",
+      location: "Matosinhos",
+    },
+    {
+      role: "Cirurgia do Joelho",
+      company: "Hospital Privado da Boa Nova / Hospital de Dia da Maia",
+      period: "Mar 2023 - Ago 2025",
+      location: "Matosinhos e Maia",
+    },
+    {
+      role: "IFE Ortopedia e Traumatologia",
+      company: "Hospital Pedro Hispano - ULSM",
+      period: "Jan 2017 - Mar 2023",
+      location: "Matosinhos",
+    },
+    {
+      role: "Fellowship em Patologia Desportiva do Joelho",
+      company: "Centre Orthopédique Santy",
+      period: "Dez 2021 - Jan 2022",
+      location: "Lyon, França",
+      description: "Desenvolvimento dos conhecimentos e técnicas cirúrgicas na área do diagnóstico e tratamento de lesões desportivas do joelho com o Dr. Bertrand Sonnery-Cottet no Centre Orthopédique Santy, FIFA Medical Center of Excellence."
+    },
+    {
+      role: "Fellowship em Patologia do Joelho",
+      company: "OS - Orthopaedic Specialists",
+      period: "Set 2021 - Nov 2021",
+      location: "Londres, Reino Unido",
+    }
+  ],
+  education: [
+    {
+      course: "Pós-graduação em Medicina Desportiva",
+      school: "Faculdade de Medicina da Universidade do Porto",
+      period: "Set 2019 – Ago 2020",
+    },
+    {
+      course: "Mestrado Integrado em Medicina",
+      school: "Faculdade de Medicina da Universidade do Porto",
+      period: "Set 2009 – Jul 2015",
+    }
+  ]
+};
 
 // --- COMPONENTE PRINCIPAL ---
 
@@ -189,8 +295,8 @@ export default function App() {
   // Estado para o contador de cirurgias
   const [surgeryCount, setSurgeryCount] = useState(0);
 
-  // 🔴 COLE AQUI O LINK DO SEU GOOGLE SHEETS INTERMÉDIO (formato CSV)
-  const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQyXFTKmHSbZhTmOYi9Oqo4B-r71zZ_TJE_oBIXLH61d7Ln7E2QHoyDf6PFRbX3A5kyYW5ji5DHWajg/pub?gid=462780236&single=true&output=csv";
+  // URL carregada das configurações
+  const GOOGLE_SHEETS_CSV_URL = surgeonData.googleSheetsCsvUrl;
 
   // Buscar número de cirurgias do Google Sheets Intermédio
   useEffect(() => {
@@ -224,7 +330,7 @@ export default function App() {
   useEffect(() => {
     const fetchOrcidData = async () => {
       try {
-        const response = await fetch('https://pub.orcid.org/v3.0/0000-0003-2156-5820/works', {
+        const response = await fetch(`https://pub.orcid.org/v3.0/${surgeonData.orcidId}/works`, {
           headers: {
             'Accept': 'application/json'
           }
@@ -271,81 +377,7 @@ export default function App() {
     { name: 'Percurso', href: '#percurso' },
   ];
 
-  const expertises = [
-    {
-      title: "Lesões Desportivas e Ligamentares",
-      desc: "Tratamento cirúrgico e conservador de roturas do Ligamento Cruzado Anterior (LCA) e lesões multiligamentares associadas à prática desportiva.",
-      illustration: <IllustrationLCA />
-    },
-    {
-      title: "Patologia do Menisco e Cartilagem",
-      desc: "Técnicas de preservação, sutura meniscal e tratamento de lesões condrais (cartilagem) focadas na longevidade da articulação.",
-      illustration: <IllustrationMeniscus />
-    },
-    {
-      title: "Artroplastia (Prótese) do Joelho",
-      desc: "Substituição articular total ou parcial recorrendo às vias de abordagem mais adequadas para uma recuperação otimizada e retorno à qualidade de vida.",
-      illustration: <IllustrationProsthesis />
-    },
-    {
-      title: "Cirurgia de Preservação Articular",
-      desc: "Osteotomias de realinhamento para correção de eixos e preservação da articulação biológica em casos de desgaste precoce.",
-      illustration: <IllustrationPreservation />
-    }
-  ];
-
-  const experiences = [
-    {
-      role: "Cirurgia do Joelho",
-      company: "Lusíadas Saúde - Maia",
-      period: "Set 2025 - Presente",
-      location: "Maia",
-    },
-    {
-      role: "Cirurgia do Joelho",
-      company: "Hospital Pedro Hispano - ULSM",
-      period: "Mar 2023 - Presente",
-      location: "Matosinhos",
-    },
-    {
-      role: "Cirurgia do Joelho",
-      company: "Hospital Privado da Boa Nova / Hospital de Dia da Maia",
-      period: "Mar 2023 - Ago 2025",
-      location: "Matosinhos e Maia",
-    },
-    {
-      role: "IFE Ortopedia e Traumatologia",
-      company: "Hospital Pedro Hispano - ULSM",
-      period: "Jan 2017 - Mar 2023",
-      location: "Matosinhos",
-    },
-    {
-      role: "Fellowship em Patologia Desportiva do Joelho",
-      company: "Centre Orthopédique Santy",
-      period: "Dez 2021 - Jan 2022",
-      location: "Lyon, França",
-      description: "Desenvolvimento dos conhecimentos e técnicas cirúrgicas na área do diagnóstico e tratamento de lesões desportivas do joelho com o Dr. Bertrand Sonnery-Cottet no Centre Orthopédique Santy, FIFA Medical Center of Excellence."
-    },
-    {
-      role: "Fellowship em Patologia do Joelho",
-      company: "OS - Orthopaedic Specialists",
-      period: "Set 2021 - Nov 2021",
-      location: "Londres, Reino Unido",
-    }
-  ];
-
-  const education = [
-    {
-      course: "Pós-graduação em Medicina Desportiva",
-      school: "Faculdade de Medicina da Universidade do Porto",
-      period: "Set 2019 – Ago 2020",
-    },
-    {
-      course: "Mestrado Integrado em Medicina",
-      school: "Faculdade de Medicina da Universidade do Porto",
-      period: "Set 2009 – Jul 2015",
-    }
-  ];
+  // as listagens expertises, experiences e education foram movidas para surgeonData
 
 
   return (
@@ -441,7 +473,7 @@ export default function App() {
         <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? (isMobileMenuOpen ? 'bg-white/90 py-3 shadow-lg' : 'glass-panel py-3 !border-t-0 !border-x-0 !rounded-none shadow-lg') : 'bg-transparent py-5'}`}>
           <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
             <a href="#" className="flex items-center gap-2">
-              <span className=" font-bold text-xl tracking-tight" style={{ color: 'var(--color-text)' }}>Dr. João Pedro Campos</span>
+              <span className=" font-bold text-xl tracking-tight" style={{ color: 'var(--color-text)' }}>{surgeonData.name}</span>
             </a>
 
             {/* Desktop Nav */}
@@ -451,7 +483,7 @@ export default function App() {
                   {link.name}
                 </a>
               ))}
-              <a href="https://www.lusiadas.pt/corpo-clinico/dr-joao-pedro-campos" target="_blank" rel="noopener noreferrer" className="btn-primary flex items-center gap-2 text-sm">
+              <a href={surgeonData.schedulingUrl} target="_blank" rel="noopener noreferrer" className="btn-primary flex items-center gap-2 text-sm">
                 Marcar Consulta
               </a>
             </div>
@@ -485,15 +517,16 @@ export default function App() {
           <div className="flex-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium" style={{ backgroundColor: 'rgba(59, 135, 123, 0.1)', color: 'var(--color-primary)' }}>
               <Stethoscope size={18} strokeWidth={1.5} />
-              <span className="text-sm tracking-wide uppercase">Especialista em Ortopedia</span>
+              <span className="text-sm tracking-wide uppercase">{surgeonData.heroTag}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight" style={{ color: 'var(--color-text)' }}>
-              Cirurgião de Joelho <br />
-              <span className="font-medium" style={{ color: 'var(--color-primary)' }}>Knee Surgeon</span>
+              {surgeonData.heroTitle} <br />
+              <span className="font-medium" style={{ color: 'var(--color-primary)' }}>{surgeonData.heroSubtitle}</span>
             </h1>
             <p className="text-lg max-w-xl leading-relaxed opacity-80" style={{ color: 'var(--color-text)' }}>
-              Dedicado à patologia do joelho. O meu foco é proporcionar os tratamentos mais avançados, apoiados em dados e precisão clínica, para restaurar a sua mobilidade.
+              {surgeonData.heroDescription}
             </p>
+
 
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -501,7 +534,7 @@ export default function App() {
                 Locais de Consulta
                 <ChevronRight size={18} />
               </a>
-              <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-campos-765214208/" target="_blank" rel="noopener noreferrer" className="glass-panel px-6 py-3 font-medium transition-all flex items-center gap-2" style={{ color: 'var(--color-primary)' }}>
+              <a href={surgeonData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="glass-panel px-6 py-3 font-medium transition-all flex items-center gap-2" style={{ color: 'var(--color-primary)' }}>
                 <Linkedin size={18} strokeWidth={1.5} />
                 Perfil LinkedIn
               </a>
@@ -511,7 +544,7 @@ export default function App() {
             <div className="absolute inset-0 transform rotate-3 scale-95 opacity-20" style={{ backgroundColor: 'var(--color-primary)', borderRadius: 'var(--radius-lg)' }}></div>
             <img
               src="/foto-minha.jpg"
-              alt="Dr. João Pedro Campos"
+              alt={surgeonData.name}
               className="w-full max-w-md shadow-xl relative z-10 object-cover aspect-[4/5]"
               style={{ borderRadius: 'var(--radius-lg)' }}
             />
@@ -532,7 +565,7 @@ export default function App() {
 
               <div className="flex flex-col items-center justify-center text-center pt-8 md:pt-0" style={{ borderColor: 'var(--surface-border)' }}>
                 <div className="clinical-data text-4xl lg:text-5xl font-bold mb-2 flex items-center gap-1" style={{ color: 'var(--color-primary)' }}>
-                  8<span className="text-3xl">+</span>
+                  {surgeonData.yearsOfExperience}<span className="text-3xl">+</span>
                 </div>
                 <div className="font-medium text-sm tracking-wide uppercase opacity-80" style={{ color: 'var(--color-text)' }}>Anos de Experiência</div>
               </div>
@@ -558,10 +591,10 @@ export default function App() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {expertises.map((item, idx) => (
+              {surgeonData.expertises.map((item, idx) => (
                 <div key={idx} className="glass-panel hover:-translate-y-1 transition-transform duration-300 group flex flex-col overflow-hidden p-2">
                   <div className="w-full h-48 md:h-56 rounded-t-xl rounded-b-sm overflow-hidden mb-6 relative border-b border-black/5">
-                    {item.illustration}
+                    {item.illustration ? item.illustration : <IllustrationFallback />}
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-40"></div>
                   </div>
                   <div className="px-6 pb-6">
@@ -643,7 +676,7 @@ export default function App() {
                     <span className="clinical-data text-sm hover:underline">Tv. Dom Júlio Tavares Rebimbas 1,<br />4470-155 Maia</span>
                   </a>
                 </div>
-                <a href="https://www.lusiadas.pt/corpo-clinico/dr-joao-pedro-campos" target="_blank" rel="noopener noreferrer" className="w-full py-3 px-4 font-semibold transition-colors flex items-center justify-center gap-2 hover:opacity-80" style={{ backgroundColor: 'rgba(59, 135, 123, 0.1)', color: 'var(--color-primary)', borderRadius: 'var(--radius-sm)' }}>
+                <a href={surgeonData.schedulingUrl} target="_blank" rel="noopener noreferrer" className="w-full py-3 px-4 font-semibold transition-colors flex items-center justify-center gap-2 hover:opacity-80" style={{ backgroundColor: 'rgba(59, 135, 123, 0.1)', color: 'var(--color-primary)', borderRadius: 'var(--radius-sm)' }}>
                   Agendar neste local <ChevronRight size={18} strokeWidth={2} />
                 </a>
               </div>
@@ -766,7 +799,7 @@ export default function App() {
                 </div>
 
                 <div className="relative border-l-2 ml-4" style={{ borderColor: 'rgba(59, 135, 123, 0.2)' }}>
-                  {experiences.map((exp, idx) => (
+                  {surgeonData.experiences.map((exp, idx) => (
                     <div key={idx} className="mb-10 ml-8 relative group">
                       <span className="absolute flex items-center justify-center w-4 h-4 rounded-full -left-[41px] top-1.5 transition-colors duration-300" style={{ backgroundColor: 'var(--color-primary)', boxShadow: '0 0 0 4px var(--color-bg)' }}></span>
 
@@ -804,7 +837,7 @@ export default function App() {
                 </div>
 
                 <div className="relative border-l-2 ml-4" style={{ borderColor: 'rgba(59, 135, 123, 0.2)' }}>
-                  {education.map((edu, idx) => (
+                  {surgeonData.education.map((edu, idx) => (
                     <div key={idx} className="mb-10 ml-8 relative group">
                       <span className="absolute flex items-center justify-center w-4 h-4 rounded-full -left-[41px] top-1.5 transition-colors duration-300" style={{ backgroundColor: 'var(--color-primary)', boxShadow: '0 0 0 4px var(--color-bg)' }}></span>
 
@@ -833,7 +866,7 @@ export default function App() {
             {/* Copyright */}
             <div className="flex items-center gap-3">
               <p className="clinical-data text-sm opacity-60">
-                &copy; {new Date().getFullYear()} <span className="font-bold opacity-100">Dr. João Pedro Campos</span>
+                &copy; {new Date().getFullYear()} <span className="font-bold opacity-100">{surgeonData.name}</span>
               </p>
             </div>
 
