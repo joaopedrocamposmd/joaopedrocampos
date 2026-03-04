@@ -45,7 +45,7 @@ const IllustrationLCA = () => (
   </svg>
 );
 
-const IllustrationMeniscu = () => (
+const IllustrationMeniscus = () => (
   <svg viewBox="0 0 400 220" className="w-full h-full" style={{ backgroundColor: 'var(--color-bg)' }}>
     <defs>
       <pattern id="gridMeniscus" width="20" height="20" patternUnits="userSpaceOnUse">
